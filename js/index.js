@@ -1,8 +1,20 @@
 // Your code goes here
+
+//targets header and makes it dissapear for 2 seconds.
+let headerImg = document.querySelector('.main-navigation');
+headerImg.addEventListener('click', () => {
+    headerImg.style.display = 'none';
+    setTimeout(function(){
+        headerImg.style.display = 'flex';
+    },2000)
+})
+
 //targets nav and sends alert if any links are clicked
 let navi= document.querySelector('.nav');
-navi.addEventListener('click', () => {
+navi.addEventListener('click', (event) => {
     alert('Oh, NOEZ!! the links are broken. SOMEONE WAKE UP THE DEVS!');
+    //stops alert from triggering when header is clicked, but doesnt stop it from dissapearing when links are clicked
+    event.target.stopPropagation();
 });
 
 //targets body and adds day/night mode on doubleclick
@@ -54,6 +66,7 @@ image2.addEventListener('mouseover',  event => {
 //     }
 //      });
 
+
 //adds a snarky lil alert if someone tries to copy content. 
 body.addEventListener('copy',() => {
     alert('Come on, try writing up your own content, thief.') ;
@@ -86,8 +99,19 @@ btn2.addEventListener('wheel', (event) => {
         event.target.style.transform = 'rotate(0deg)';
     }, 2000)
 });
+//displays secret message on alternate mouse click
+btn3.addEventListener('auxclick', () => {
 
-btn3.addEventListener('keydown', () => {
     alert('you\'ve discovered our hidden message. Too bad that means we have to...  dispose of you.')
+});
+
+//targets bottom image and flips it on right-click, also prevents context menu from popping up
+let contentImg = document.querySelector('.content-destination img');
+contentImg.addEventListener('contextmenu', (event) => {
+    event.preventDefault();
+    event.target.style.transform = 'rotateX(180deg)';
+    setTimeout( function(){
+        event.target.style.transform = 'rotateX(0deg)';
+    }, 2000);
 });
 
