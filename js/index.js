@@ -30,21 +30,26 @@ document.querySelectorAll('.img-content')[1];
 //increases image scale on mouseover and shrinks it for mouseleave
 image1.addEventListener('mouseover', event => {
     event.target.style.transform = 'scale(1.5)';
+    setTimeout(() => {
+        event.target.style.transform = `scale(1)`;
+        }, 1000);
+    
 });
-image1.addEventListener('mouseleave', event => {
-    event.target.style.transform = `scale(.6)`;
- });
-//same as above but for image 2
-image2.addEventListener('mouseover', event => {
-    event.target.style.transform = 'scale(1.5)';
-});
-image2.addEventListener('mouseleave', event => {
-    event.target.style.transform = `scale(.6)`;
- });
 
- body.addEventListener('keydown', event => {
+//same as above but for image 2
+image2.addEventListener('mouseover',  event => {
+    event.target.style.transform = 'scale(1.5)';
+    setTimeout(() => {
+    event.target.style.transform = `scale(1)`;
+    }, 1000);
+});
+
+let p = document.querySelector('p')
+
+ p.addEventListener('keydown', event => {
      if (event.key == 'ArrowRight')
     {event.target.style.fontSize += '.5em';} else if (event.key == 'ArrowLeft') 
     {event.target.style.fontSize -= '.5em';
     }
      });
+
