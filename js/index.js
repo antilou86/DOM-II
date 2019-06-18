@@ -44,12 +44,50 @@ image2.addEventListener('mouseover',  event => {
     }, 1000);
 });
 
-let p = document.querySelector('p')
+//I like this idea but i'll have to work on it when i have more time. 
 
- p.addEventListener('keydown', event => {
-     if (event.key == 'ArrowRight')
-    {event.target.style.fontSize += '.5em';} else if (event.key == 'ArrowLeft') 
-    {event.target.style.fontSize -= '.5em';
-    }
-     });
+// let p = document.querySelector('p')
+//  p.addEventListener('keydown', event => {
+//      if (event.key == 'ArrowRight')
+//     {event.target.style.fontSize += '.5em';} else if (event.key == 'ArrowLeft') 
+//     {event.target.style.fontSize -= '.5em';
+//     }
+//      });
+
+//adds a snarky lil alert if someone tries to copy content. 
+body.addEventListener('copy',() => {
+    alert('Come on, try writing up your own content, thief.') ;
+});
+
+//targets buttons at the bottom of the page
+let btn1 = document.querySelectorAll('.btn')[0];
+let btn2 = document.querySelectorAll('.btn')[1];
+let btn3 = document.querySelectorAll('.btn')[2];
+
+console.log(btn1);
+
+//something fun when button 1 is mashed down
+btn1.addEventListener('mousedown', event => {
+    event.target.innerHTML = 'LET ME GO';
+});
+//reverts changes on mouseup
+btn1.addEventListener('mouseup', (event) => {
+    event.target.innerHTML = 'Sign Me Up!';
+});
+
+//makes button2 do a wheelie on wheel scroll
+btn2.addEventListener('wheel', (event) => {
+    event.target.innerHTML = 'IT\'S A WHEELIE!!!';
+    event.target.style.backgroundColor = 'red';
+    event.target.style.transform = 'rotate(-20deg)';
+    setTimeout(function(){
+        event.target.innerHTML = 'Sign Me Up!';
+        event.target.style.backgroundColor = '#17A2B8';
+        event.target.style.transform = 'rotate(0deg)';
+    }, 2000)
+});
+
+btn3.addEventListener('keydown', () => {
+    alert('you\'ve discovered our hidden message. Too bad that means we have to...  dispose of you.')
+});
 
